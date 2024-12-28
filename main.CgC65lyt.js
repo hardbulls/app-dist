@@ -39,32 +39,44 @@ true&&(function polyfill() {
 }());
 
 class Storage {
+  static state = {
+    theme: "auto",
+    language: "auto",
+    showPastGames: false,
+    showPastEvents: false,
+    leagues: []
+  };
   static setTheme(theme) {
     localStorage.setItem("theme", theme);
+    Storage.state.theme = theme;
   }
   static getTheme() {
-    return localStorage.getItem("theme") || "auto";
+    return Storage.state.theme;
   }
   static setLanguage(language) {
     localStorage.setItem("language", language);
+    Storage.state.language = language;
   }
   static getLanguage() {
-    return localStorage.getItem("language") || "auto";
+    return Storage.state.language;
   }
   static setShowPastGames(showPastGames) {
     localStorage.setItem("showPastGames", JSON.stringify(showPastGames));
+    Storage.state.showPastGames = showPastGames;
   }
   static getShowPastGames() {
-    return localStorage.getItem("showPastGames") === "true";
+    return Storage.state.showPastGames;
   }
   static setShowPastEvents(showPastEvents) {
     localStorage.setItem("showPastEvents", JSON.stringify(showPastEvents));
+    Storage.state.showPastEvents = showPastEvents;
   }
   static getShowPastEvents() {
-    return localStorage.getItem("showPastEvents") === "true";
+    return Storage.state.showPastEvents;
   }
   static setLeagues(leagues) {
     localStorage.setItem("leagues", JSON.stringify(leagues));
+    Storage.state.leagues = leagues;
   }
   static addLeague(league) {
     const leagues = Storage.getLeagues();
@@ -77,10 +89,23 @@ class Storage {
     Storage.setLeagues(Storage.getLeagues().filter((v) => v !== league));
   }
   static getLeagues() {
-    const data = localStorage.getItem("leagues");
-    return data ? JSON.parse(data) : [];
+    return Storage.state.leagues;
+  }
+  static getStateString() {
+    return JSON.stringify(this.state);
+  }
+  static load() {
+    const leagues = localStorage.getItem("leagues");
+    Storage.state = {
+      theme: localStorage.getItem("theme") || "auto",
+      language: localStorage.getItem("language") || "auto",
+      showPastGames: localStorage.getItem("showPastGames") === "true",
+      showPastEvents: localStorage.getItem("showPastEvents") === "true",
+      leagues: leagues ? JSON.parse(leagues) : []
+    };
   }
 }
+Storage.load();
 
 let L = "x", z = [];
 function It(s) {
@@ -3148,8 +3173,8 @@ const TRANSLATIONS = {
     de: "Meine Teams"
   },
   "app.settings.games": {
-    en: "Games",
-    de: "Spiele"
+    en: "Games and Events",
+    de: "Spiele und Veranstaltungen"
   },
   "app.events.no-events": {
     en: "No events are scheduled at the moment",
@@ -3216,8 +3241,8 @@ const TRANSLATIONS = {
     de: "Über diese App"
   },
   "app.settings.legal": {
-    en: "This app works entirely offline and does not store any personal data on remote servers. All data is processed and stored only on your device. The app may use external services to retrieve publicly available information, but no personal data is shared or transmitted.",
-    de: "Diese App funktioniert vollständig offline und speichert keine persönlichen Daten auf externen Servern. Alle Daten werden nur auf Ihrem Gerät verarbeitet und gespeichert. Die App kann externe Dienste nutzen, um öffentlich verfügbare Informationen abzurufen, jedoch werden keine persönlichen Daten weitergegeben oder übermittelt."
+    en: "This app works offline and does not store any personal data on remote servers. All data is processed and stored only on your device. The app may use external services to retrieve publicly available information, but no personal data is shared or transmitted.",
+    de: "Diese App funktioniert offline und speichert keine persönlichen Daten auf entfernten Servern. Alle Daten werden ausschließlich auf Ihrem Gerät verarbeitet und gespeichert. Die App kann externe Dienste nutzen, um öffentlich verfügbare Informationen abzurufen, aber keine persönlichen Daten werden geteilt oder übertragen."
   },
   "app.settings.outdated": {
     en: "The information provided by this app may be subject to change and could be outdated. While we strive to keep it accurate, we cannot guarantee that all data is always up to date. Please verify important information from official sources.",
@@ -3645,6 +3670,7 @@ class GamesPage extends HTMLElement {
         for (const league of CONFIG.BULLS_LEAGUES) {
           this.bullsGames.push(...await GamesRepository.findScheduledBySeasonAndLeague(CONFIG.SEASON, league, !showPastGames));
         }
+        this.bullsGames = this.sortGames(this.bullsGames);
         update = true;
       }
       this.noBullsGames = this.bullsGames.length === 0;
@@ -3655,7 +3681,7 @@ class GamesPage extends HTMLElement {
         for (const league of userLeagues) {
           userGames.push(...await GamesRepository.findScheduledBySeasonAndLeague(CONFIG.SEASON, league, !showPastGames));
         }
-        this.userGames = userGames;
+        this.userGames = this.sortGames(userGames);
         update = true;
       }
       this.noUserGames = this.userGames.length === 0;
@@ -3665,6 +3691,17 @@ class GamesPage extends HTMLElement {
         this.update();
       }
     })();
+  }
+  sortGames(games) {
+    return games.sort((a, b) => {
+      if (a.date.getTime() > b.date.getTime()) {
+        return 1;
+      }
+      if (a.date.getTime() < b.date.getTime()) {
+        return -1;
+      }
+      return 0;
+    });
   }
 }
 
@@ -3988,6 +4025,7 @@ class Route extends HTMLElement {
   static get observedAttributes() {
     return ["path", "default"];
   }
+  lastState = null;
   connectedCallback() {
     Router.register(this);
     if (!this.isMatchingPath()) {
@@ -4015,10 +4053,14 @@ class Route extends HTMLElement {
   }
   show() {
     this.style.display = "block";
-    this.childNodes.forEach((v) => {
-      const clone = v.cloneNode();
-      this.replaceChild(clone, v);
-    });
+    const currentState = Storage.getStateString();
+    if (this.lastState !== currentState) {
+      this.lastState = currentState;
+      this.childNodes.forEach((v) => {
+        const clone = v.cloneNode(true);
+        this.replaceChild(clone, v);
+      });
+    }
   }
   hide() {
     this.style.display = "none";
@@ -4390,4 +4432,4 @@ customElements.define("hb-game-card", GameCard);
 customElements.define("hb-event-card", EventCard);
 document.querySelector("x-container").append(new Shell());
 registerServiceWorker();
-//# sourceMappingURL=main.CBrJnHbR.js.map
+//# sourceMappingURL=main.CgC65lyt.js.map

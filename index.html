@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/icon.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="manifest" href="/manifest.json" />
+    <title>Hard Bulls App</title>
+
+    <style>
+        html,
+        :host {
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+            -moz-tab-size: 4;
+            tab-size: 4;
+            -webkit-tap-highlight-color: transparent;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100vh;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            line-height: inherit;
+            background-color: #ffffff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #1f1f1f;
+            }
+        }
+
+        x-loading {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            z-index: 9999;
+        }
+
+        @keyframes x-loading-animation {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+    </style>
+  <script type="module" crossorigin src="/main.CBrJnHbR.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/config-Bk6KWWaJ.js">
+</head>
+<body>
+<x-loading></x-loading>
+
+<x-theme style="display: none" theme="auto" font-family-heading="Neue Aachen Regular, sans-serif"
+         font-family-default="sans-serif" color-primary="#ed1c24" color-text-light="#000000" color-text-dark="#ffffff"
+         color-background-light="#ffffff" color-background-dark="#1f1f1f" bottom-navigation-height="8vh" app-bar-height="8vh">
+        <hb-router></hb-router>
+        <x-container>
+        </x-container>
+</x-theme>
+
+</body>
+</html>

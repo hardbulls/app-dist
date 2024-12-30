@@ -2727,6 +2727,7 @@ function precacheAndRoute(entries, options) {
     addRoute(options);
 }
 
+self.__WB_DISABLE_DEV_LOGS = true;
 self.addEventListener("install", async (_) => {
   await self.skipWaiting();
 });
@@ -2756,4 +2757,4 @@ registerRoute(
     ]
   })
 );
-//# sourceMappingURL=_dummy.Cr0UmzLl.js.map
+//# sourceMappingURL=_dummy.EMaMnWE_.js.map

@@ -3270,6 +3270,47 @@ function translate(key, locale) {
   return key;
 }
 
+class Router extends HTMLElement {
+  static routes = [];
+  constructor() {
+    super();
+    window.addEventListener("hashchange", () => this.update());
+    this.update();
+  }
+  static unregister(route) {
+    this.routes = this.routes.filter((v) => v !== route);
+  }
+  static register(route) {
+    this.routes.push(route);
+    if (route.isMatchingPath()) {
+      route.show();
+    } else {
+      route.hide();
+    }
+  }
+  static current() {
+    return window.location.hash.slice(1);
+  }
+  update() {
+    Router.routes.forEach((route) => {
+      if (route.isMatchingPath()) {
+        route.show();
+      } else {
+        route.hide();
+      }
+    });
+  }
+  connectedCallback() {
+    this.update();
+  }
+  static default() {
+    return Router.routes.find((route) => route.isDefault);
+  }
+  static exists(path) {
+    return Router.routes.some((route) => route.path === path);
+  }
+}
+
 class Shell extends HTMLElement {
   shadow;
   snackbarContainer;
@@ -3370,6 +3411,37 @@ class Shell extends HTMLElement {
       }
     }, 2e3);
     this.networkStatusListener();
+    this.activeBottomNavigation();
+  }
+  activeBottomNavigation() {
+    const links = this.shadow.querySelectorAll("x-bottom-navigation > x-bare-link > a");
+    if (links.length === 0) {
+      return;
+    }
+    const updateActiveState = () => {
+      const activeRoute = Router.current();
+      for (const link of links) {
+        const linkRoute = link.href.split("#")?.[1];
+        const action = link.querySelector("x-bottom-navigation-action");
+        if (action) {
+          if (linkRoute === activeRoute) {
+            action.setAttribute("active", "");
+          } else {
+            action.removeAttribute("active");
+          }
+        }
+      }
+    };
+    const initializeState = () => {
+      const currentHash = Router.current();
+      if (!currentHash) {
+        window.location.hash = `#games`;
+      }
+      updateActiveState();
+    };
+    window.addEventListener("hashchange", updateActiveState);
+    window.addEventListener("popstate", updateActiveState);
+    initializeState();
   }
   networkStatusListener() {
     window.addEventListener("online", () => {
@@ -3986,41 +4058,6 @@ class SettingsPage extends HTMLElement {
   }
 }
 
-class Router extends HTMLElement {
-  static routes = [];
-  constructor() {
-    super();
-    window.addEventListener("hashchange", () => this.update());
-    this.update();
-  }
-  static unregister(route) {
-    this.routes = this.routes.filter((v) => v !== route);
-  }
-  static register(route) {
-    this.routes.push(route);
-    if (route.isMatchingPath()) {
-      route.show();
-    } else {
-      route.hide();
-    }
-  }
-  static current() {
-    return window.location.hash.slice(1);
-  }
-  update() {
-    Router.routes.forEach((route) => {
-      if (route.isMatchingPath()) {
-        route.show();
-      } else {
-        route.hide();
-      }
-    });
-  }
-  connectedCallback() {
-    this.update();
-  }
-}
-
 class Route extends HTMLElement {
   static get observedAttributes() {
     return ["path", "default"];
@@ -4432,4 +4469,4 @@ customElements.define("hb-game-card", GameCard);
 customElements.define("hb-event-card", EventCard);
 document.querySelector("x-container").append(new Shell());
 registerServiceWorker();
-//# sourceMappingURL=main.CgC65lyt.js.map
+//# sourceMappingURL=main.DUuuPnxD.js.map

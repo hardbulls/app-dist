@@ -2739,6 +2739,7 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
       // 1d
     };
 
+    self.__WB_DISABLE_DEV_LOGS = true;
     self.addEventListener("install", async (_) => {
       await self.skipWaiting();
     });

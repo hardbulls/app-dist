@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8"/>
     <link rel="icon" type="image/svg+xml" href="/icon.svg"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <link rel="manifest" href="/manifest.json"/>
     <base href="/">
     <title>Hard Bulls App</title>
 
     <style>
         :root {
-            --vh: 100%;
+            --vh: 100svh;
         }
 
         html,
@@ -67,7 +67,7 @@
             }
         }
     </style>
-  <script type="module" crossorigin src="/main.B9t83LZm.js"></script>
+  <script type="module" crossorigin src="/main.CJ2R1z-I.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/EventRepository-CAZ5Gn83.js">
 </head>
 <body>
@@ -90,18 +90,7 @@
             window.onpopstate = function (event) {
                 history.go(1);
             };
-
         }
-
-        function setVhProperty() {
-            // Set the --vh property to the actual viewport height
-            document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-        }
-
-        setVhProperty();
-
-        window.addEventListener('resize', setVhProperty);
-
     })()
 </script>
 

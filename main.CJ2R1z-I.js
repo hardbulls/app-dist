@@ -1903,7 +1903,7 @@ import{t as p,S as g,C as T,G as V,d as ht,a as ut,L as pt,E as gt,b as mt}from"
                         </x-typography>
                         
                         <x-typography display="overline">
-                            ${p("app.settings.version")} 0.0.4-beta
+                            ${p("app.settings.version")} 0.0.5-beta
                         </x-typography>
                     </x-stack>
                 </x-box>

@@ -9,6 +9,10 @@
     <title>Hard Bulls App</title>
 
     <style>
+        :root {
+            --vh: 100%;
+        }
+
         html,
         :host {
             line-height: 1.5;
@@ -20,7 +24,7 @@
             padding: 0;
             box-sizing: border-box;
             width: 100%;
-            height: 100svh;
+            height: var(--vh);
             overscroll-behavior: none;
             overscroll-behavior-x: none;
         }
@@ -31,6 +35,7 @@
             line-height: inherit;
             background-color: #ffffff;
             touch-action: none;
+            height: var(--vh);
             overscroll-behavior: none;
             overscroll-behavior-x: none;
             display: none; /* Initially hide the body */
@@ -66,26 +71,39 @@
   <link rel="modulepreload" crossorigin href="/assets/EventRepository-Di2MaWbi.js">
 </head>
 <body>
-    <hb-soft-auth></hb-soft-auth>
-    <x-loading></x-loading>
+<hb-soft-auth></hb-soft-auth>
+<x-loading></x-loading>
 
-    <x-theme style="display: none" theme="auto" font-family-heading="Neue Aachen Regular, sans-serif"
-            font-family-default="sans-serif" color-primary="#ed1c24" color-text-light="#000000" color-text-dark="#ffffff"
-            color-background-light="#ffffff" color-background-dark="#1f1f1f" bottom-navigation-height="8svh"
-            app-bar-height="8svh" bottom-navigation-offset="20px">
-        <hb-router></hb-router>
-        <x-container>
-        </x-container>
-    </x-theme>
+<x-theme style="display: none" theme="auto" font-family-heading="Neue Aachen Regular, sans-serif"
+         font-family-default="sans-serif" color-primary="#ed1c24" color-text-light="#000000" color-text-dark="#ffffff"
+         color-background-light="#ffffff" color-background-dark="#1f1f1f" bottom-navigation-height="8svh"
+         app-bar-height="8svh" bottom-navigation-offset="20px">
+    <hb-router></hb-router>
+    <x-container>
+    </x-container>
+</x-theme>
 
-    <script>
+<script>
+    (() => {
         if (window.safari) {
             history.pushState(null, null, location.href);
-            window.onpopstate = function(event) {
+            window.onpopstate = function (event) {
                 history.go(1);
             };
+
         }
-    </script>
+
+        function setVhProperty() {
+            // Set the --vh property to the actual viewport height
+            document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+        }
+
+        setVhProperty();
+
+        window.addEventListener('resize', setVhProperty);
+
+    })()
+</script>
 
 </body>
 </html>

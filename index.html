@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <link rel="icon" type="image/svg+xml" href="/icon.svg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="manifest" href="/manifest.json"/>
     <base href="/">
     <title>Hard Bulls App</title>
 
@@ -22,6 +22,7 @@
             width: 100%;
             height: 100dvh;
             overscroll-behavior: none;
+            overscroll-behavior-x: none;
         }
 
         body {
@@ -31,6 +32,8 @@
             background-color: #ffffff;
             touch-action: none;
             overscroll-behavior: none;
+            overscroll-behavior-x: none;
+            display: none; /* Initially hide the body */
         }
 
         @media (prefers-color-scheme: dark) {
@@ -59,19 +62,30 @@
             }
         }
     </style>
-  <script type="module" crossorigin src="/main.DUuuPnxD.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/config-Bk6KWWaJ.js">
+  <script type="module" crossorigin src="/main.DKMXZ9nr.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/config-BSEdrMJ9.js">
 </head>
 <body>
-<x-loading></x-loading>
+    <hb-soft-auth></hb-soft-auth>
+    <x-loading></x-loading>
 
-<x-theme style="display: none" theme="auto" font-family-heading="Neue Aachen Regular, sans-serif"
-         font-family-default="sans-serif" color-primary="#ed1c24" color-text-light="#000000" color-text-dark="#ffffff"
-         color-background-light="#ffffff" color-background-dark="#1f1f1f" bottom-navigation-height="8dvh" app-bar-height="8dvh">
+    <x-theme style="display: none" theme="auto" font-family-heading="Neue Aachen Regular, sans-serif"
+            font-family-default="sans-serif" color-primary="#ed1c24" color-text-light="#000000" color-text-dark="#ffffff"
+            color-background-light="#ffffff" color-background-dark="#1f1f1f" bottom-navigation-height="8dvh"
+            app-bar-height="8dvh">
         <hb-router></hb-router>
         <x-container>
         </x-container>
-</x-theme>
+    </x-theme>
+
+    <script>
+        if (window.safari) {
+            history.pushState(null, null, location.href);
+            window.onpopstate = function(event) {
+                history.go(1);
+            };
+        }
+    </script>
 
 </body>
 </html>

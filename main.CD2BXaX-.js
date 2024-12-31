@@ -1580,7 +1580,7 @@ import{t as p,S as g,C as T,G as V,d as ht,a as ut,L as pt,E as gt,b as mt}from"
                 :host {
                     display: flex;
                     flex-direction: column;
-                    height: 100vh;
+                    height: 100%;
                     position: relative;
                 }
 
@@ -1903,7 +1903,7 @@ import{t as p,S as g,C as T,G as V,d as ht,a as ut,L as pt,E as gt,b as mt}from"
                         </x-typography>
                         
                         <x-typography display="overline">
-                            ${p("app.settings.version")} 0.0.5-beta
+                            ${p("app.settings.version")} 0.0.6-beta
                         </x-typography>
                     </x-stack>
                 </x-box>
@@ -1975,8 +1975,8 @@ import{t as p,S as g,C as T,G as V,d as ht,a as ut,L as pt,E as gt,b as mt}from"
         `}}class oe extends HTMLElement{constructor(){super(),localStorage.getItem("_beta_access")==="true"||this.hasAttribute("disabled")||this.hasAttribute("enabled")&&!1?document.body.style.display="block":prompt("Password")==="bulls2025"?(document.body.style.display="block",localStorage.setItem("_beta_access","true")):(document.body.innerHTML="<h1>Access Denied</h1>",document.body.style.display="block",document.body.style.backgroundColor="#ffffff",document.body.style.textAlign="center")}}class ae extends HTMLElement{constructor(){super();const t=this.attachShadow({mode:"open"}),i=document.createElement("style");i.textContent=`
       :host {
         display: block;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         color: var(--semantic-text-highlight);
         position: fixed;
         top: 0;

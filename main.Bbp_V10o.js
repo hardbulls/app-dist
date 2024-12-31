@@ -1,4 +1,4 @@
-import{t as u,S as g,C as T,G as U,d as mt,a as bt,L as ft,E as xt,b as vt}from"./assets/EventRepository-JxfLbHp0.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))i(s);new MutationObserver(s=>{for(const a of s)if(a.type==="childList")for(const r of a.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&i(r)}).observe(document,{childList:!0,subtree:!0});function e(s){const a={};return s.integrity&&(a.integrity=s.integrity),s.referrerPolicy&&(a.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?a.credentials="include":s.crossOrigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function i(s){if(s.ep)return;s.ep=!0;const a=e(s);fetch(s.href,a)}})();let q="x",M=[];function yt(o){q=o}function d(o,t,e){M.push(()=>{window.customElements.define(`${q}-${o}`,t,e)})}function kt(){for(const o of M)o();M=[]}function l(){return q}function n(o){return`var(--${l()}-${o})`}function wt(){document.addEventListener("DOMContentLoaded",function(){const o=`${l()}-theme`,t=document.querySelector(o);if(!t)throw new Error(`Not theme tag found: ${o}`);if(t.style.display!=="none")throw new Error('Theme tag needs inline style of "display: none"  for the wait functionality to work.');t&&customElements.get(o)?t.style.display="":customElements.whenDefined(o).then(()=>{t.style.display=""})})}var k=(o=>(o[o.XS=480]="XS",o[o.MD=600]="MD",o[o.LG=960]="LG",o[o.XL=1280]="XL",o))(k||{}),w=(o=>(o.LIGHT="light",o.DARK="dark",o.AUTO="auto",o))(w||{});function v(o){let t=0,e=0,i=0;return o.length===4?(t=parseInt(o[1]+o[1],16),e=parseInt(o[2]+o[2],16),i=parseInt(o[3]+o[3],16)):o.length===7&&(t=parseInt(o[1]+o[2],16),e=parseInt(o[3]+o[4],16),i=parseInt(o[5]+o[6],16)),`${t}, ${e}, ${i}`}function h(o,t){let e=!1;o[0]==="#"&&(o=o.slice(1),e=!0);const i=parseInt(o,16);let s=(i>>16)+t;s=s>255?255:s<0?0:s;let a=(i>>8&255)+t;a=a>255?255:a<0?0:a;let r=(i&255)+t;return r=r>255?255:r<0?0:r,(e?"#":"")+(16777216+(s<<16)+(a<<8)+r).toString(16).slice(1)}function $t(o,t,e,i,s){function a(r,c,p,b){const x=b?60:-60,S=v(r),z=v(c),L=v(p);return{primary:{50:h(r,100),100:h(r,70),200:h(r,50),300:h(r,30),400:h(r,20),500:r,600:h(r,-10),700:h(r,-20),800:h(r,-30),900:h(r,-50)},secondary:{50:h(r,-100),100:h(r,-70),200:h(r,-50),300:h(r,-30),400:h(r,-20),500:h(r,-10),600:h(r,-20),700:h(r,-30),800:h(r,-40),900:h(r,-50)},background:{50:h(c,100),100:h(c,70),200:h(c,50),300:h(c,30),400:h(c,20),500:c,600:h(c,-10),700:h(c,-20),800:h(c,-30),900:h(c,-50),1e3:h(c,-80)},neutral:{background:c,text:p,border:h(c,x)},rgb:{primary:S,secondary:v(h(r,-20)),background:z,text:L,border:v(h(c,x))}}}return{light:a(o,e,t,!1),dark:a(o,s,i,!0)}}function Et(o){function t(i){const{primary:s,secondary:a,neutral:r,rgb:c,background:p}=o[i];return`
+import{t as u,S as g,C as T,G as U,d as mt,a as bt,L as ft,E as xt,b as yt}from"./assets/EventRepository-JxfLbHp0.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))i(s);new MutationObserver(s=>{for(const a of s)if(a.type==="childList")for(const r of a.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&i(r)}).observe(document,{childList:!0,subtree:!0});function e(s){const a={};return s.integrity&&(a.integrity=s.integrity),s.referrerPolicy&&(a.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?a.credentials="include":s.crossOrigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function i(s){if(s.ep)return;s.ep=!0;const a=e(s);fetch(s.href,a)}})();let q="x",M=[];function vt(o){q=o}function d(o,t,e){M.push(()=>{window.customElements.define(`${q}-${o}`,t,e)})}function kt(){for(const o of M)o();M=[]}function l(){return q}function n(o){return`var(--${l()}-${o})`}function wt(){document.addEventListener("DOMContentLoaded",function(){const o=`${l()}-theme`,t=document.querySelector(o);if(!t)throw new Error(`Not theme tag found: ${o}`);if(t.style.display!=="none")throw new Error('Theme tag needs inline style of "display: none"  for the wait functionality to work.');t&&customElements.get(o)?t.style.display="":customElements.whenDefined(o).then(()=>{t.style.display=""})})}var k=(o=>(o[o.XS=480]="XS",o[o.MD=600]="MD",o[o.LG=960]="LG",o[o.XL=1280]="XL",o))(k||{}),w=(o=>(o.LIGHT="light",o.DARK="dark",o.AUTO="auto",o))(w||{});function y(o){let t=0,e=0,i=0;return o.length===4?(t=parseInt(o[1]+o[1],16),e=parseInt(o[2]+o[2],16),i=parseInt(o[3]+o[3],16)):o.length===7&&(t=parseInt(o[1]+o[2],16),e=parseInt(o[3]+o[4],16),i=parseInt(o[5]+o[6],16)),`${t}, ${e}, ${i}`}function h(o,t){let e=!1;o[0]==="#"&&(o=o.slice(1),e=!0);const i=parseInt(o,16);let s=(i>>16)+t;s=s>255?255:s<0?0:s;let a=(i>>8&255)+t;a=a>255?255:a<0?0:a;let r=(i&255)+t;return r=r>255?255:r<0?0:r,(e?"#":"")+(16777216+(s<<16)+(a<<8)+r).toString(16).slice(1)}function $t(o,t,e,i,s){function a(r,c,p,b){const x=b?60:-60,S=y(r),z=y(c),L=y(p);return{primary:{50:h(r,100),100:h(r,70),200:h(r,50),300:h(r,30),400:h(r,20),500:r,600:h(r,-10),700:h(r,-20),800:h(r,-30),900:h(r,-50)},secondary:{50:h(r,-100),100:h(r,-70),200:h(r,-50),300:h(r,-30),400:h(r,-20),500:h(r,-10),600:h(r,-20),700:h(r,-30),800:h(r,-40),900:h(r,-50)},background:{50:h(c,100),100:h(c,70),200:h(c,50),300:h(c,30),400:h(c,20),500:c,600:h(c,-10),700:h(c,-20),800:h(c,-30),900:h(c,-50),1e3:h(c,-80)},neutral:{background:c,text:p,border:h(c,x)},rgb:{primary:S,secondary:y(h(r,-20)),background:z,text:L,border:y(h(c,x))}}}return{light:a(o,e,t,!1),dark:a(o,s,i,!0)}}function Et(o){function t(i){const{primary:s,secondary:a,neutral:r,rgb:c,background:p}=o[i];return`
       --${i}-primary-50: ${s[50]};
       --${i}-primary-100: ${s[100]};
       --${i}-primary-200: ${s[200]};
@@ -11,8 +11,8 @@ import{t as u,S as g,C as T,G as U,d as mt,a as bt,L as ft,E as xt,b as vt}from"
       --${i}-primary-900: ${s[900]};
 
 
-      --${i}-primary-100_rgb: ${v(s[100])};
-      --${i}-primary-900_rgb: ${v(s[900])};
+      --${i}-primary-100_rgb: ${y(s[100])};
+      --${i}-primary-900_rgb: ${y(s[900])};
 
       --${i}-secondary-50: ${a[50]};
       --${i}-secondary-100: ${a[100]};
@@ -317,7 +317,7 @@ import{t as u,S as g,C as T,G as U,d as mt,a as bt,L as ft,E as xt,b as vt}from"
         visibility: visible;
         opacity: 1;
       }
-    `,t.append(e,this.tooltip);const i=document.createElement("slot");t.appendChild(i),this.addEventListener("mouseenter",this.showTooltip.bind(this)),this.addEventListener("mouseleave",this.hideTooltip.bind(this)),this.addEventListener("touchstart",this.toggleTooltip.bind(this)),document.addEventListener("click",this.handleOutsideClick.bind(this)),window.addEventListener("scroll",this.scheduleReposition.bind(this))}connectedCallback(){this.tooltip.textContent=this.getAttribute("text")||"Tooltip content"}disconnectedCallback(){document.removeEventListener("click",this.handleOutsideClick.bind(this)),window.removeEventListener("scroll",this.scheduleReposition.bind(this))}showTooltip(){this.isTooltipVisible||($.activeTooltips.forEach(t=>{t!==this&&t.isTooltipVisible&&t.hideTooltip()}),$.activeTooltips.push(this),this.tooltip.textContent=this.getAttribute("text")||"Tooltip content",this.repositionTooltip(),this.tooltip.setAttribute("visible","true"),this.isTooltipVisible=!0,this.touchTimeout&&clearTimeout(this.touchTimeout),this.touchTimeout=window.setTimeout(()=>this.hideTooltip(),3e3))}hideTooltip(){this.tooltip.removeAttribute("visible"),this.isTooltipVisible=!1;const t=$.activeTooltips.indexOf(this);t!==-1&&$.activeTooltips.splice(t,1),clearTimeout(this.touchTimeout)}toggleTooltip(t){t.preventDefault(),this.isTooltipVisible?this.hideTooltip():this.showTooltip()}handleOutsideClick(t){this.contains(t.target)||this.hideTooltip()}scheduleReposition(){this.repositionScheduled||(this.repositionScheduled=!0,requestAnimationFrame(()=>{this.repositionTooltip(),this.repositionScheduled=!1}))}repositionTooltip(){if(!this.isTooltipVisible)return;const t=this.getBoundingClientRect(),e=this.tooltip.getBoundingClientRect(),i=this.closest("div[style*='overflow']")||document.documentElement,s=i.getBoundingClientRect(),a=i.scrollTop,r=i.scrollLeft;let c=t.top+a-s.top-e.height-8,p=t.left+r-s.left+(t.width-e.width)/2;c<a&&(c=t.bottom+a-s.top+8),p<r?p=t.left+r-s.left+t.width+8:p+e.width>s.width+r&&(p=t.left+r-s.left-e.width-8),c+e.height>s.height+a&&(c=t.top+a-s.top-e.height-8),this.tooltip.style.left=`${p}px`,this.tooltip.style.top=`${c}px`}};K.activeTooltips=[];let Mt=K;d("tooltip",Mt);function y(){return`
+    `,t.append(e,this.tooltip);const i=document.createElement("slot");t.appendChild(i),this.addEventListener("mouseenter",this.showTooltip.bind(this)),this.addEventListener("mouseleave",this.hideTooltip.bind(this)),this.addEventListener("touchstart",this.toggleTooltip.bind(this)),document.addEventListener("click",this.handleOutsideClick.bind(this)),window.addEventListener("scroll",this.scheduleReposition.bind(this))}connectedCallback(){this.tooltip.textContent=this.getAttribute("text")||"Tooltip content"}disconnectedCallback(){document.removeEventListener("click",this.handleOutsideClick.bind(this)),window.removeEventListener("scroll",this.scheduleReposition.bind(this))}showTooltip(){this.isTooltipVisible||($.activeTooltips.forEach(t=>{t!==this&&t.isTooltipVisible&&t.hideTooltip()}),$.activeTooltips.push(this),this.tooltip.textContent=this.getAttribute("text")||"Tooltip content",this.repositionTooltip(),this.tooltip.setAttribute("visible","true"),this.isTooltipVisible=!0,this.touchTimeout&&clearTimeout(this.touchTimeout),this.touchTimeout=window.setTimeout(()=>this.hideTooltip(),3e3))}hideTooltip(){this.tooltip.removeAttribute("visible"),this.isTooltipVisible=!1;const t=$.activeTooltips.indexOf(this);t!==-1&&$.activeTooltips.splice(t,1),clearTimeout(this.touchTimeout)}toggleTooltip(t){t.preventDefault(),this.isTooltipVisible?this.hideTooltip():this.showTooltip()}handleOutsideClick(t){this.contains(t.target)||this.hideTooltip()}scheduleReposition(){this.repositionScheduled||(this.repositionScheduled=!0,requestAnimationFrame(()=>{this.repositionTooltip(),this.repositionScheduled=!1}))}repositionTooltip(){if(!this.isTooltipVisible)return;const t=this.getBoundingClientRect(),e=this.tooltip.getBoundingClientRect(),i=this.closest("div[style*='overflow']")||document.documentElement,s=i.getBoundingClientRect(),a=i.scrollTop,r=i.scrollLeft;let c=t.top+a-s.top-e.height-8,p=t.left+r-s.left+(t.width-e.width)/2;c<a&&(c=t.bottom+a-s.top+8),p<r?p=t.left+r-s.left+t.width+8:p+e.width>s.width+r&&(p=t.left+r-s.left-e.width-8),c+e.height>s.height+a&&(c=t.top+a-s.top-e.height-8),this.tooltip.style.left=`${p}px`,this.tooltip.style.top=`${c}px`}};K.activeTooltips=[];let Mt=K;d("tooltip",Mt);function v(){return`
         :host([stretch-vertical]) {
             height: 100%;
         }
@@ -332,7 +332,7 @@ import{t as u,S as g,C as T,G as U,d as mt,a as bt,L as ft,E as xt,b as vt}from"
                 width: max-content;
             }
             
-            ${y()}
+            ${v()}
 
             :host .container {
                 position: relative;
@@ -740,7 +740,7 @@ import{t as u,S as g,C as T,G as U,d as mt,a as bt,L as ft,E as xt,b as vt}from"
             }
                 
             ${Q()}
-            ${y()}
+            ${v()}
 
             :host([stretch][direction="horizontal"]) {
                 width: 100%;
@@ -755,7 +755,7 @@ import{t as u,S as g,C as T,G as U,d as mt,a as bt,L as ft,E as xt,b as vt}from"
                 overflow: auto;
             }
 
-            ${y()}
+            ${v()}
         `,t.appendChild(e);const i=document.createElement("slot");t.append(i)}static get observedAttributes(){return["stretch","height","width"]}connectedCallback(){this.hasAttribute("height")&&(this.style.height=this.getAttribute("height")||"auto"),this.hasAttribute("width")&&(this.style.width=this.getAttribute("width")||"auto")}attributeChangedCallback(t,e,i){!O.observedAttributes.includes(t)||e===i||(t==="height"&&(this.style.height=i||"auto"),t==="width"&&(this.style.width=i||"auto"))}}d("scroll-box",O);class Dt extends HTMLElement{constructor(){super(),this.shadow=this.attachShadow({mode:"open"});const t=document.createElement("style");t.textContent=`
       :host {
         display: inline-block;
@@ -796,7 +796,7 @@ import{t as u,S as g,C as T,G as U,d as mt,a as bt,L as ft,E as xt,b as vt}from"
                 flex-wrap: wrap;
             }
             
-            ${y()}
+            ${v()}
       `;const e=this.attachShadow({mode:"open"});e.appendChild(t);const i=document.createElement("slot");e.appendChild(i)}}d("block",Rt);class Bt extends HTMLElement{constructor(){super();const t=this.attachShadow({mode:"open"});this.button=document.createElement("button"),this.button.classList.add("button");const e=document.createElement("style");e.textContent=`
       :host {
         width: max-content;
@@ -817,7 +817,7 @@ import{t as u,S as g,C as T,G as U,d as mt,a as bt,L as ft,E as xt,b as vt}from"
         touch-action: manipulation; /* Helps with touch interactions */
       }
       
-      ${y()}
+      ${v()}
 
       :host .button {
         width: 100%;
@@ -1059,7 +1059,7 @@ import{t as u,S as g,C as T,G as U,d as mt,a as bt,L as ft,E as xt,b as vt}from"
             }
 
             ${Q()}
-            ${y()}
+            ${v()}
 
             :host([margin-inline="small"]) {
                 padding-inline: ${n("spacing-sm")};
@@ -1413,7 +1413,7 @@ import{t as u,S as g,C as T,G as U,d as mt,a as bt,L as ft,E as xt,b as vt}from"
         pointer-events: auto;
       }
 
-      ${y()}
+      ${v()}
 
       :host([fixed]) {
         position: fixed;
@@ -1575,7 +1575,7 @@ import{t as u,S as g,C as T,G as U,d as mt,a as bt,L as ft,E as xt,b as vt}from"
       :host([no-label]) .label {
         display: none;
       }
-    `;const e=this.getAttribute("svg");if(e){const s=document.createElement("div");s.className="icon-container",this.icon=new H,this.icon.setAttribute("svg",e),this.icon.setAttribute("size","none"),this.icon.className="icon",s.appendChild(this.icon),this.shadow.appendChild(s)}const i=new E;i.className="label",i.setAttribute("display","h6"),i.textContent=this.getAttribute("label")||"",this.getAttribute("label")||this.setAttribute("no-label",""),this.shadow.appendChild(t),this.shadow.appendChild(i)}static get observedAttributes(){return["svg"]}attributeChangedCallback(t,e,i){if(t==="svg"&&e!==i){const s=this.shadow.querySelector(".icon-container");this.icon?i?this.icon.setAttribute("svg",i):(s&&s.removeChild(this.icon),this.icon=void 0):i&&(this.icon=new H,this.icon.setAttribute("svg",i),this.icon.className="icon",s&&s.appendChild(this.icon))}}}d("bottom-navigation-action",ie);class m extends HTMLElement{static routes=[];constructor(){super(),window.addEventListener("hashchange",()=>this.update()),this.update()}static unregister(t){this.routes=this.routes.filter(e=>e!==t)}static register(t){this.routes.push(t),t.isMatchingPath()?t.show():t.hide()}static current(){return window.location.hash.slice(1)}update(){m.routes.forEach(t=>{t.isMatchingPath()?t.show():t.hide()})}connectedCallback(){this.update()}static default(){return m.routes.find(t=>t.isDefault)}static exists(t){return m.routes.some(e=>e.path===t)}}function it(){const o=navigator.userAgent;return/iPhone|iPad|iPod/i.test(o)?/Safari/i.test(o)&&!/CriOS|FxiOS/i.test(o):/Macintosh/i.test(o)?/Safari/i.test(o)&&!/Chrome/i.test(o):!1}function se(){history.pushState(null,"",location.href),window.onpopstate=()=>{history.go(1)}}let G,j=!1;async function st(){return window.matchMedia("(display-mode: standalone)").matches||"standalone"in window.navigator&&window.navigator.standalone?!0:"getInstalledRelatedApps"in navigator&&typeof navigator.getInstalledRelatedApps=="function"?(await navigator.getInstalledRelatedApps()).length>0:!1}function oe(){window.addEventListener("beforeinstallprompt",o=>{o.preventDefault(),G=o,console.log("Install prompt event detected")})}function W(o=5e3){return new Promise(t=>{const e=Date.now(),i=()=>{G?t(G):Date.now()-e<o?setTimeout(i,100):t(void 0)};i()})}function ae(){"serviceWorker"in navigator&&window.addEventListener("load",()=>{navigator.serviceWorker.register("/service-worker.js",{scope:"/",type:"module"}).then(e=>{console.log("ServiceWorker registration successful with scope: ",e.scope),e.waiting&&(j=!0),e.onupdatefound=()=>{const i=e.installing;i&&(i.onstatechange=()=>{i.state==="installed"&&(j=!0)})}}).catch(e=>{console.log("ServiceWorker registration failed: ",e)})})}function ne(){return new Promise(o=>{setTimeout(()=>{o(j)},1e3)})}class ot extends HTMLElement{shadow;snackbarContainer;constructor(){super(),this.shadow=this.attachShadow({mode:"open"}),this.shadow.innerHTML=`
+    `;const e=this.getAttribute("svg");if(e){const s=document.createElement("div");s.className="icon-container",this.icon=new H,this.icon.setAttribute("svg",e),this.icon.setAttribute("size","none"),this.icon.className="icon",s.appendChild(this.icon),this.shadow.appendChild(s)}const i=new E;i.className="label",i.setAttribute("display","h6"),i.textContent=this.getAttribute("label")||"",this.getAttribute("label")||this.setAttribute("no-label",""),this.shadow.appendChild(t),this.shadow.appendChild(i)}static get observedAttributes(){return["svg"]}attributeChangedCallback(t,e,i){if(t==="svg"&&e!==i){const s=this.shadow.querySelector(".icon-container");this.icon?i?this.icon.setAttribute("svg",i):(s&&s.removeChild(this.icon),this.icon=void 0):i&&(this.icon=new H,this.icon.setAttribute("svg",i),this.icon.className="icon",s&&s.appendChild(this.icon))}}}d("bottom-navigation-action",ie);class m extends HTMLElement{static routes=[];constructor(){super(),window.addEventListener("hashchange",()=>this.update()),this.update()}static unregister(t){this.routes=this.routes.filter(e=>e!==t)}static register(t){this.routes.push(t),t.isMatchingPath()?t.show():t.hide()}static current(){return window.location.hash.slice(1)}update(){m.routes.forEach(t=>{t.isMatchingPath()?t.show():t.hide()})}connectedCallback(){this.update()}static default(){return m.routes.find(t=>t.isDefault)}static exists(t){return m.routes.some(e=>e.path===t)}}function it(){const o=navigator.userAgent;return/iPhone|iPad|iPod/i.test(o)?/Safari/i.test(o)&&!/CriOS|FxiOS/i.test(o):/Macintosh/i.test(o)?/Safari/i.test(o)&&!/Chrome/i.test(o):!1}function se(){history.pushState(null,"",location.href),window.onpopstate=()=>{history.go(1)}}let G,j=!1;async function st(){return window.matchMedia("(display-mode: standalone)").matches||"standalone"in window.navigator&&window.navigator.standalone?!0:"getInstalledRelatedApps"in navigator&&typeof navigator.getInstalledRelatedApps=="function"?(await navigator.getInstalledRelatedApps()).length>0:(console.log("pwa installed 3"),!1)}function oe(){window.addEventListener("beforeinstallprompt",o=>{o.preventDefault(),G=o,console.log("Install prompt event detected")})}function W(o=5e3){return new Promise(t=>{const e=Date.now(),i=()=>{G?t(G):Date.now()-e<o?setTimeout(i,100):t(void 0)};i()})}function ae(){"serviceWorker"in navigator&&window.addEventListener("load",()=>{navigator.serviceWorker.register("/service-worker.js",{scope:"/",type:"module"}).then(e=>{console.log("ServiceWorker registration successful with scope: ",e.scope),e.waiting&&(j=!0),e.onupdatefound=()=>{const i=e.installing;i&&(i.onstatechange=()=>{i.state==="installed"&&(j=!0)})}}).catch(e=>{console.log("ServiceWorker registration failed: ",e)})})}function ne(){return new Promise(o=>{setTimeout(()=>{o(j)},1e3)})}class ot extends HTMLElement{shadow;snackbarContainer;constructor(){super(),this.shadow=this.attachShadow({mode:"open"}),this.shadow.innerHTML=`
             <style>
                 :host {
                     display: flex;
@@ -1655,7 +1655,7 @@ import{t as u,S as g,C as T,G as U,d as mt,a as bt,L as ft,E as xt,b as vt}from"
                     </a>
                 </x-bare-link>
             </x-bottom-navigation>
-        `,this.snackbarContainer=this.shadow.querySelector("#snackbar-container")}connectedCallback(){setTimeout(()=>{const t=this.shadow.querySelector("#splash");t&&(t.classList.add("fade-out"),t.addEventListener("transitionend",()=>{t.remove(),this.removeAttribute("style")}))},2e3),this.networkStatusListener(),this.activeBottomNavigation(),st()||this.installationInstructions()}activeBottomNavigation(){const t=this.shadow.querySelectorAll("x-bottom-navigation > x-bare-link > a");if(t.length===0)return;const e=()=>{const s=m.current();for(const a of t){const r=a.href.split("#")?.[1],c=a.querySelector("x-bottom-navigation-action");c&&(r===s?c.setAttribute("active",""):c.removeAttribute("active"))}},i=()=>{m.current()||(window.location.hash="#games"),e()};window.addEventListener("hashchange",e),window.addEventListener("popstate",e),i()}installationInstructions(){if(it()){let t=this.snackbarContainer.querySelector("#installation-instructions");if(!t){const e=new I;e.id="installation-instructions",e.setAttribute("position","left"),e.setAttribute("stretch-horizontal",""),e.setAttribute("fixed",""),e.setAttribute("offset","bottom-navigation"),e.setAttribute("closable",""),e.innerHTML=`
+        `,this.snackbarContainer=this.shadow.querySelector("#snackbar-container")}connectedCallback(){(async()=>(setTimeout(()=>{const t=this.shadow.querySelector("#splash");t&&(t.classList.add("fade-out"),t.addEventListener("transitionend",()=>{t.remove(),this.removeAttribute("style")}))},2e3),this.networkStatusListener(),this.activeBottomNavigation(),await st()||this.installationInstructions()))()}activeBottomNavigation(){const t=this.shadow.querySelectorAll("x-bottom-navigation > x-bare-link > a");if(t.length===0)return;const e=()=>{const s=m.current();for(const a of t){const r=a.href.split("#")?.[1],c=a.querySelector("x-bottom-navigation-action");c&&(r===s?c.setAttribute("active",""):c.removeAttribute("active"))}},i=()=>{m.current()||(window.location.hash="#games"),e()};window.addEventListener("hashchange",e),window.addEventListener("popstate",e),i()}installationInstructions(){if(it()){let t=this.snackbarContainer.querySelector("#installation-instructions");if(!t){const e=new I;e.id="installation-instructions",e.setAttribute("position","left"),e.setAttribute("stretch-horizontal",""),e.setAttribute("fixed",""),e.setAttribute("offset","bottom-navigation"),e.setAttribute("closable",""),e.innerHTML=`
                     <x-typography display="h4">
                             ${u("app.installation.apple",void 0,{"{shareIcon}":'<x-icon svg="/icons/apple_share.svg" style="width: 2em; height: 1em; vertical-align: text-bottom; transform: scale(1.5);"></x-icon>'})}
                 `,this.snackbarContainer.append(e),t=e}t.setAttribute("visible","")}}networkStatusListener(){window.addEventListener("online",()=>{const t=this.snackbarContainer.querySelector("#offline-status");t&&t.removeAttribute("visible")}),window.addEventListener("offline",()=>{let t=this.snackbarContainer.querySelector("#offline-status");if(!t){const e=new I;e.id="offline-status",e.setAttribute("position","left"),e.setAttribute("stretch-horizontal",""),e.setAttribute("fixed",""),e.setAttribute("offset","bottom-navigation"),e.setAttribute("closable",""),e.innerHTML=`
@@ -1905,7 +1905,7 @@ import{t as u,S as g,C as T,G as U,d as mt,a as bt,L as ft,E as xt,b as vt}from"
                         </x-typography>
                         
                         <x-typography display="overline">
-                            ${u("app.settings.version")} 0.0.7-beta
+                            ${u("app.settings.version")} 0.0.8-beta
                         </x-typography>
                         
                         <div id="update-button"></div>
@@ -1960,7 +1960,7 @@ import{t as u,S as g,C as T,G as U,d as mt,a as bt,L as ft,E as xt,b as vt}from"
                             
                             <x-box justify-content="left">
                                 <x-typography display="h4" style="font-weight: 600">
-                                    ${vt.format(r)}
+                                    ${yt.format(r)}
                                 </x-typography>
                             </x-box>
                             <x-box justify-content="left">
@@ -2069,4 +2069,4 @@ import{t as u,S as g,C as T,G as U,d as mt,a as bt,L as ft,E as xt,b as vt}from"
             <x-box margin-inline="small" margin-block="small" justify-content="center" stretch-vertical stretch-horizontal>
                 <x-spinner size="large"></x-spinner>
             </x-box>
-        `}}oe();yt("x");wt();kt();document.querySelector("x-theme")?.setAttribute("theme",g.getTheme());customElements.define("hb-soft-auth",he);customElements.define("hb-loading",ge);customElements.define("hb-splash",ue);customElements.define("hb-route",de);customElements.define("hb-router",m);customElements.define("hb-shell",ot);customElements.define("hb-header",pe);customElements.define("hb-settings-page",le);customElements.define("hb-games-page",re);customElements.define("hb-events-page",ce);customElements.define("hb-game-card",V);customElements.define("hb-event-card",F);document.querySelector("x-container")?.append(new ot);ae();g.load();it()&&se();
+        `}}oe();vt("x");wt();kt();document.querySelector("x-theme")?.setAttribute("theme",g.getTheme());customElements.define("hb-soft-auth",he);customElements.define("hb-loading",ge);customElements.define("hb-splash",ue);customElements.define("hb-route",de);customElements.define("hb-router",m);customElements.define("hb-shell",ot);customElements.define("hb-header",pe);customElements.define("hb-settings-page",le);customElements.define("hb-games-page",re);customElements.define("hb-events-page",ce);customElements.define("hb-game-card",V);customElements.define("hb-event-card",F);document.querySelector("x-container")?.append(new ot);ae();g.load();it()&&se();

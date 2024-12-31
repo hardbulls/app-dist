@@ -1,6 +1,6 @@
 {
     "name": "Bulls App",
-    "short_name": "BullsApp",
+    "short_name": "Bulls App",
     "description": "Hard Bulls Baseball App",
     "start_url": "/",
     "display": "standalone",

@@ -2910,6 +2910,87 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
       }
     }
 
+    function isPastDate(date) {
+      return date < /* @__PURE__ */ new Date();
+    }
+
+    class EventRepository {
+      static async findAll(onlyFutureEvents) {
+        const apiEvents = await fetchApi(
+          `/api/events.json`,
+          () => []
+        );
+        return apiEvents.map((v) => {
+          return {
+            ...v,
+            logo: v.logo ? `${CONFIG.API_BASE}assets/events/${v.logo}` : void 0,
+            date: new Date(v.date)
+          };
+        }).filter((v) => onlyFutureEvents ? !isPastDate(v.date) : true).sort((a, b) => a.date.getTime() - b.date.getTime());
+      }
+    }
+
+    async function getPrecachedJsonApiUrls() {
+      const urls = ["api/events.json", "api/fields.json", "api/leagues.json"];
+      for (const league of await LeagueRepository.findAll()) {
+        urls.push(`api/seasons/${CONFIG.SEASON}/${league.id}/games.json`);
+      }
+      return urls.map((v) => `${CONFIG.API_BASE}${v}`);
+    }
+    async function getPrecachedAssetUrls() {
+      const urls = [];
+      for (const field of await FieldRepository.findAll()) {
+        if (field.image) {
+          urls.push(field.image);
+        }
+      }
+      for (const team of await TeamRepository.findAll()) {
+        if (team.logo) {
+          urls.push(team.logo);
+        }
+      }
+      for (const event of await EventRepository.findAll(false)) {
+        if (event.logo) {
+          urls.push(event.logo);
+        }
+      }
+      return [...new Set(urls)];
+    }
+
+    class GamesRepository {
+      static async findScheduledBySeasonAndLeague(season, league, onlyFutureGames) {
+        const apiGames = await fetchApi(
+          `/api/seasons/${season}/${league}/games.json`,
+          () => []
+        );
+        const result = [];
+        for (const apiGame of apiGames) {
+          const gameDateTime = new Date(apiGame.date);
+          const includeGame = onlyFutureGames ? !isPastDate(gameDateTime) && apiGame.status === "scheduled" : true;
+          if (includeGame) {
+            result.push({
+              home: await TeamRepository.findByName(apiGame.home),
+              away: await TeamRepository.findByName(apiGame.away),
+              status: apiGame.status,
+              homeScore: apiGame.homeScore,
+              awayScore: apiGame.awayScore,
+              venue: apiGame.venue ? await FieldRepository.findByKeyword(apiGame.venue) : void 0,
+              date: gameDateTime,
+              league: await LeagueRepository.findById(apiGame.league)
+            });
+          }
+        }
+        return Object.values(result).sort(
+          (a, b) => a.date.getTime() - b.date.getTime()
+        );
+      }
+      static async findGamesForDay(date, season, league) {
+        return (await this.findScheduledBySeasonAndLeague(season, league, false)).filter((game) => {
+          return game.date.toDateString() === date.toDateString();
+        });
+      }
+    }
+
     const STATE_UPDATE_MESSAGE = "state";
     const DEFAULT_STATE = {
       theme: "auto",
@@ -2996,6 +3077,16 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
       }
     }
 
+    let state = DEFAULT_STATE;
+    self.addEventListener("message", (event) => {
+      if (event.data && event.data.type === STATE_UPDATE_MESSAGE) {
+        state = event.data.state;
+      }
+    });
+    function getState() {
+      return state;
+    }
+
     function getLang() {
       if (Storage.getLanguage() === "auto") {
         if (navigator.languages != void 0) {
@@ -3006,99 +3097,23 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
       return Storage.getLanguage();
     }
 
-    const locale = getLang();
-    const dateTimeFormatterShort = new Intl.DateTimeFormat(locale, {
-      dateStyle: "short",
-      timeStyle: "short"
-    });
-    function isPastDate(date) {
-      return date < /* @__PURE__ */ new Date();
-    }
-
-    class EventRepository {
-      static async findAll(onlyFutureEvents) {
-        const apiEvents = await fetchApi(
-          `/api/events.json`,
-          () => []
-        );
-        return apiEvents.map((v) => {
-          return {
-            ...v,
-            logo: v.logo ? `${CONFIG.API_BASE}assets/events/${v.logo}` : void 0,
-            date: new Date(v.date)
-          };
-        }).filter((v) => onlyFutureEvents ? !isPastDate(v.date) : true).sort((a, b) => a.date.getTime() - b.date.getTime());
-      }
-    }
-
-    async function getPrecachedJsonApiUrls() {
-      const urls = ["api/events.json", "api/fields.json", "api/leagues.json"];
-      for (const league of await LeagueRepository.findAll()) {
-        urls.push(`api/seasons/${CONFIG.SEASON}/${league.id}/games.json`);
-      }
-      return urls.map((v) => `${CONFIG.API_BASE}${v}`);
-    }
-    async function getPrecachedAssetUrls() {
-      const urls = [];
-      for (const field of await FieldRepository.findAll()) {
-        if (field.image) {
-          urls.push(field.image);
-        }
-      }
-      for (const team of await TeamRepository.findAll()) {
-        if (team.logo) {
-          urls.push(team.logo);
-        }
-      }
-      for (const event of await EventRepository.findAll(false)) {
-        if (event.logo) {
-          urls.push(event.logo);
-        }
-      }
-      return [...new Set(urls)];
-    }
-
-    class GamesRepository {
-      static async findScheduledBySeasonAndLeague(season, league, onlyFutureGames) {
-        const apiGames = await fetchApi(
-          `/api/seasons/${season}/${league}/games.json`,
-          () => []
-        );
-        const result = [];
-        for (const apiGame of apiGames) {
-          const gameDateTime = new Date(apiGame.date);
-          const includeGame = onlyFutureGames ? !isPastDate(gameDateTime) && apiGame.status === "scheduled" : true;
-          if (includeGame) {
-            result.push({
-              home: await TeamRepository.findByName(apiGame.home),
-              away: await TeamRepository.findByName(apiGame.away),
-              homeScore: apiGame.homeScore,
-              awayScore: apiGame.awayScore,
-              venue: apiGame.venue ? await FieldRepository.findByKeyword(apiGame.venue) : void 0,
-              date: gameDateTime,
-              league: await LeagueRepository.findById(apiGame.league)
-            });
-          }
-        }
-        return Object.values(result).sort(
-          (a, b) => a.date.getTime() - b.date.getTime()
-        );
-      }
-      static async findGamesForDay(date, season, league) {
-        return (await this.findScheduledBySeasonAndLeague(season, league, false)).filter((game) => {
-          return game.date.toDateString() === date.toDateString();
-        });
-      }
-    }
-
-    let state = DEFAULT_STATE;
-    self.addEventListener("message", (event) => {
-      if (event.data && event.data.type === STATE_UPDATE_MESSAGE) {
-        state = event.data.state;
-      }
-    });
-    function getState() {
-      return state;
+    var DateFormat = /* @__PURE__ */ ((DateFormat2) => {
+      DateFormat2["TIME_ONLY"] = "TIME_ONLY";
+      DateFormat2["DATE_ONLY"] = "DATE_ONLY";
+      DateFormat2["DATE_TIME"] = "DATE_TIME";
+      DateFormat2["DATE_TIME_SHORT"] = "DATE_TIME_SHORT";
+      return DateFormat2;
+    })(DateFormat || {});
+    const formatOptions = {
+      ["TIME_ONLY" /* TIME_ONLY */]: { timeStyle: "short" },
+      ["DATE_ONLY" /* DATE_ONLY */]: { dateStyle: "full" },
+      ["DATE_TIME" /* DATE_TIME */]: { dateStyle: "full", timeStyle: "short" },
+      ["DATE_TIME_SHORT" /* DATE_TIME_SHORT */]: { dateStyle: "short", timeStyle: "short" }
+    };
+    function formatDate(value, format) {
+      const locale = getLang();
+      const formatter = new Intl.DateTimeFormat(locale, formatOptions[format]);
+      return formatter.format(value);
     }
 
     self.__WB_DISABLE_DEV_LOGS = true;
@@ -3116,7 +3131,7 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
       await self.skipWaiting();
     });
     clientsClaim();
-    precacheAndRoute([{"revision":"638b94b6ff353523b4141d15f8617df0","url":"192x192-maskable.png"},{"revision":"0de804844936ad8a5b09a62825d81e5c","url":"192x192.png"},{"revision":"9721abf3a89ceb8404db7ce24f0f4cac","url":"512x512-maskable.png"},{"revision":"c4aab75a66e536fbc3bc71eaa918b919","url":"512x512.png"},{"revision":"0851aefc21ecc7cb297090660d2833ae","url":"assets/EventRepository-DHgKepIX.js"},{"revision":"32f094cddb03a6a63379e605800a36c6","url":"favicon.ico"},{"revision":"b724ab034caed95e3817902aaa9f15da","url":"icon.svg"},{"revision":"1323f0898d53b404beda23fc08cdca2b","url":"icons/apple_share.svg"},{"revision":"459c024ec54fcd6e6dd6352164f3874a","url":"icons/baseball-helmet.svg"},{"revision":"ed102eaef5e3f23a0bf5a2ba658cae5f","url":"icons/baseball.svg"},{"revision":"78cc32f1b1611d9880bef2fef0708ebf","url":"icons/calendar-dots.svg"},{"revision":"c18781107d773375d30063731b8c4eab","url":"icons/dots-three-circle.svg"},{"revision":"ac7da8ce255583a24fd32c3f4c6fa655","url":"icons/download.svg"},{"revision":"b77014424f62dedc9b471b489a67897c","url":"icons/house-line.svg"},{"revision":"f9ee48fbe9771975ed99e94ca1675b9c","url":"images/background_landscape.webp"},{"revision":"e757cc99b4f210e1985bc58d051cab97","url":"images/background_portrait.webp"},{"revision":"5ad9675dee7300191226a53cbdcca531","url":"index.html"},{"revision":"653637a4f1b7a49ac038af4c026f4351","url":"logos/bull.svg"},{"revision":"c03d47b23901a7715c07531772156036","url":"logos/bulls_mlb.svg"},{"revision":"ff6fc0bbd39075b09d61ff5240cf1bc3","url":"logos/hb.svg"},{"revision":"8593824db8e7af30874002c8d0d40032","url":"main.DHHv9Pqq.js"},{"revision":"43979ec8d81189f3cdfa532403478875","url":"manifest.json"}]);
+    precacheAndRoute([{"revision":"638b94b6ff353523b4141d15f8617df0","url":"192x192-maskable.png"},{"revision":"0de804844936ad8a5b09a62825d81e5c","url":"192x192.png"},{"revision":"9721abf3a89ceb8404db7ce24f0f4cac","url":"512x512-maskable.png"},{"revision":"c4aab75a66e536fbc3bc71eaa918b919","url":"512x512.png"},{"revision":"19eb75e624410e3d6143532d29bacf02","url":"assets/EventRepository-iPu5GOFD.js"},{"revision":"32f094cddb03a6a63379e605800a36c6","url":"favicon.ico"},{"revision":"b724ab034caed95e3817902aaa9f15da","url":"icon.svg"},{"revision":"1323f0898d53b404beda23fc08cdca2b","url":"icons/apple_share.svg"},{"revision":"459c024ec54fcd6e6dd6352164f3874a","url":"icons/baseball-helmet.svg"},{"revision":"ed102eaef5e3f23a0bf5a2ba658cae5f","url":"icons/baseball.svg"},{"revision":"78cc32f1b1611d9880bef2fef0708ebf","url":"icons/calendar-dots.svg"},{"revision":"c18781107d773375d30063731b8c4eab","url":"icons/dots-three-circle.svg"},{"revision":"ac7da8ce255583a24fd32c3f4c6fa655","url":"icons/download.svg"},{"revision":"b77014424f62dedc9b471b489a67897c","url":"icons/house-line.svg"},{"revision":"f9ee48fbe9771975ed99e94ca1675b9c","url":"images/background_landscape.webp"},{"revision":"e757cc99b4f210e1985bc58d051cab97","url":"images/background_portrait.webp"},{"revision":"d806ac8a419391eb2767f16934aa8f43","url":"index.html"},{"revision":"653637a4f1b7a49ac038af4c026f4351","url":"logos/bull.svg"},{"revision":"c03d47b23901a7715c07531772156036","url":"logos/bulls_mlb.svg"},{"revision":"ff6fc0bbd39075b09d61ff5240cf1bc3","url":"logos/hb.svg"},{"revision":"9b43d60777f84f79577ff452c0e1a487","url":"main.I5XQkS5c.js"},{"revision":"09d433818629b67b5d767ed789b8d18b","url":"manifest.json"}]);
     registerRoute(
       new RegExp(`^${escapeRegExp(CONFIG.API_BASE)}api/.*\\.json$`),
       new StaleWhileRevalidate({
@@ -3159,7 +3174,7 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
         }
         for (const game of games) {
           const title = `${game.away.name} vs. ${game.home.name}`;
-          let body = `${dateTimeFormatterShort.format(game.date)}`;
+          let body = `${formatDate(game.date, DateFormat.DATE_TIME_SHORT)}`;
           if (game.venue) {
             body = `${[body, game.venue?.venue, game.venue?.location].filter(Boolean).join(", ")}`;
           }
@@ -3169,6 +3184,6 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
         }
       }
     });
-    console.log(`app version: ${"0.0.10-beta"}`);
+    console.log(`app version: ${"0.0.11-beta"}`);
 
 })();

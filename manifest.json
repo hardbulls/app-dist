@@ -40,7 +40,9 @@
     "dir": "auto",
     "display_override": ["window-controls-overlay", "standalone", "browser"],
     "scope": "/",
-    "scope_extensions": ["https://api.hardbulls.com"],
+    "scope_extensions": [
+      { "origin": "*.hardbulls.com" }
+    ],
     "prefer_related_applications": false,
     "related_applications": [],
     "categories": ["sports", "entertainment"],

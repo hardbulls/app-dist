@@ -1,7 +1,7 @@
 {
     "id": "@hardbulls/app",
-    "name": "Bulls App",
-    "short_name": "Bulls App",
+    "name": "BullsApp",
+    "short_name": "BullsApp",
     "description": "Hard Bulls Baseball App",
     "start_url": "/",
     "display": "standalone",
@@ -10,25 +10,25 @@
     "orientation": "portrait",
     "icons": [
       {
-        "src": "/192x192.png",
+        "src": "/web-app-manifest-192x192.png",
         "sizes": "192x192",
         "type": "image/png",
         "purpose": "any"
       },
       {
-        "src": "/192x192-maskable.png",
+        "src": "/web-app-manifest-192x192.png",
         "sizes": "192x192",
         "type": "image/png",
         "purpose": "maskable"
       },
       {
-        "src": "/512x512.png",
+        "src": "/web-app-manifest-512x512.png",
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "any"
       },
       {
-        "src": "/512x512-maskable.png",
+        "src": "/web-app-manifest-512x512.png",
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "maskable"

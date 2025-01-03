@@ -2736,8 +2736,9 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
       BULLS_LEAGUES: ["bbl"],
       ASSET_JSON_CACHE_TTL: 60 * 60,
       // 1h
-      ASSET_IMAGE_CACHE_TTL: 60 * 60 * 24
+      ASSET_IMAGE_CACHE_TTL: 60 * 60 * 24,
       // 1d
+      SPLASH_TIMEOUT: 1800
     };
 
     const CACHE = {};
@@ -3131,7 +3132,7 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
       await self.skipWaiting();
     });
     clientsClaim();
-    precacheAndRoute([{"revision":"638b94b6ff353523b4141d15f8617df0","url":"192x192-maskable.png"},{"revision":"0de804844936ad8a5b09a62825d81e5c","url":"192x192.png"},{"revision":"9721abf3a89ceb8404db7ce24f0f4cac","url":"512x512-maskable.png"},{"revision":"c4aab75a66e536fbc3bc71eaa918b919","url":"512x512.png"},{"revision":"19eb75e624410e3d6143532d29bacf02","url":"assets/EventRepository-iPu5GOFD.js"},{"revision":"32f094cddb03a6a63379e605800a36c6","url":"favicon.ico"},{"revision":"b724ab034caed95e3817902aaa9f15da","url":"icon.svg"},{"revision":"1323f0898d53b404beda23fc08cdca2b","url":"icons/apple_share.svg"},{"revision":"459c024ec54fcd6e6dd6352164f3874a","url":"icons/baseball-helmet.svg"},{"revision":"ed102eaef5e3f23a0bf5a2ba658cae5f","url":"icons/baseball.svg"},{"revision":"78cc32f1b1611d9880bef2fef0708ebf","url":"icons/calendar-dots.svg"},{"revision":"c18781107d773375d30063731b8c4eab","url":"icons/dots-three-circle.svg"},{"revision":"ac7da8ce255583a24fd32c3f4c6fa655","url":"icons/download.svg"},{"revision":"b77014424f62dedc9b471b489a67897c","url":"icons/house-line.svg"},{"revision":"f9ee48fbe9771975ed99e94ca1675b9c","url":"images/background_landscape.webp"},{"revision":"e757cc99b4f210e1985bc58d051cab97","url":"images/background_portrait.webp"},{"revision":"d806ac8a419391eb2767f16934aa8f43","url":"index.html"},{"revision":"653637a4f1b7a49ac038af4c026f4351","url":"logos/bull.svg"},{"revision":"c03d47b23901a7715c07531772156036","url":"logos/bulls_mlb.svg"},{"revision":"ff6fc0bbd39075b09d61ff5240cf1bc3","url":"logos/hb.svg"},{"revision":"9b43d60777f84f79577ff452c0e1a487","url":"main.I5XQkS5c.js"},{"revision":"09d433818629b67b5d767ed789b8d18b","url":"manifest.json"}]);
+    precacheAndRoute([{"revision":"638b94b6ff353523b4141d15f8617df0","url":"192x192-maskable.png"},{"revision":"0de804844936ad8a5b09a62825d81e5c","url":"192x192.png"},{"revision":"9721abf3a89ceb8404db7ce24f0f4cac","url":"512x512-maskable.png"},{"revision":"c4aab75a66e536fbc3bc71eaa918b919","url":"512x512.png"},{"revision":"deb3c21a893607ba0fa5d6644bf3c168","url":"assets/EventRepository-OUthFii9.js"},{"revision":"32f094cddb03a6a63379e605800a36c6","url":"favicon.ico"},{"revision":"b724ab034caed95e3817902aaa9f15da","url":"icon.svg"},{"revision":"1323f0898d53b404beda23fc08cdca2b","url":"icons/apple_share.svg"},{"revision":"459c024ec54fcd6e6dd6352164f3874a","url":"icons/baseball-helmet.svg"},{"revision":"ed102eaef5e3f23a0bf5a2ba658cae5f","url":"icons/baseball.svg"},{"revision":"78cc32f1b1611d9880bef2fef0708ebf","url":"icons/calendar-dots.svg"},{"revision":"c18781107d773375d30063731b8c4eab","url":"icons/dots-three-circle.svg"},{"revision":"ac7da8ce255583a24fd32c3f4c6fa655","url":"icons/download.svg"},{"revision":"b77014424f62dedc9b471b489a67897c","url":"icons/house-line.svg"},{"revision":"297f26b52ab8a6e5a17f56ffb0732e9f","url":"images/background_landscape.webp"},{"revision":"2d0c37c282625acb66643c2d63b57980","url":"images/background_portrait.webp"},{"revision":"55b97c1ab0d27484b1ad8dbff3702671","url":"index.html"},{"revision":"653637a4f1b7a49ac038af4c026f4351","url":"logos/bull.svg"},{"revision":"c03d47b23901a7715c07531772156036","url":"logos/bulls_mlb.svg"},{"revision":"ff6fc0bbd39075b09d61ff5240cf1bc3","url":"logos/hb.svg"},{"revision":"7aff5ff946ae625d09d8e2b572e90507","url":"main.DwUZXwDE.js"},{"revision":"09d433818629b67b5d767ed789b8d18b","url":"manifest.json"}]);
     registerRoute(
       new RegExp(`^${escapeRegExp(CONFIG.API_BASE)}api/.*\\.json$`),
       new StaleWhileRevalidate({
@@ -3184,6 +3185,6 @@ This is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
         }
       }
     });
-    console.log(`app version: ${"0.0.11-beta"}`);
+    console.log(`app version: ${"0.0.12-beta"}`);
 
 })();

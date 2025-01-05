@@ -41,7 +41,8 @@
     "display_override": ["window-controls-overlay", "standalone", "browser"],
     "scope": "/",
     "scope_extensions": [
-      { "origin": "*.hardbulls.com" }
+      { "origin": "*.hardbulls.com" },
+      { "origin": "hardbulls.com" }
     ],
     "prefer_related_applications": false,
     "related_applications": [],

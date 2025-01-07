@@ -2159,7 +2159,7 @@ import{C as D,t as b,S as x,G as xe,f as Et,D as St,L as we,g as mi,a as ke,E as
 
             <x-box stretch-horizontal>
                 <x-bare-link style="width: 100%">
-                    <a href="${e}" ${a?'target="_blank"':""}>
+                    <a rel="noopener noreferrer" href="${e}" ${a?'target="_blank"':""}>
                         <x-nav-button border-bottom ${i?`arrow="${i}"`:""}>
                                     <x-typography display="overline">
                                         ${t}

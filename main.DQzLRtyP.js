@@ -2216,7 +2216,7 @@ import{C as M,t as g,S as v,G as ve,f as Et,D as St,L as we,g as mi,a as ke,E as
 
                 <x-box margin-inline="small" margin-block="small">
                     <x-typography display="body1">
-                        ${g("app.info.version")} 0.1.2
+                        ${g("app.info.version")} 0.1.3
                     </x-typography>
                 </x-box>
 
@@ -2228,7 +2228,7 @@ import{C as M,t as g,S as v,G as ve,f as Et,D as St,L as we,g as mi,a as ke,E as
                 
                 <hb-page-link text="${g("app.settings.links.disclaimer")}" border-top border-bottom href="/#disclaimer"></hb-page-link>
                 ${`
-                <hb-page-link text="${g("app.settings.links.licenses")}" border-top border-bottom href="/#licenses"></hb-page-link>
+                <hb-page-link text="${g("app.settings.links.licenses")}" href="/#licenses"></hb-page-link>
                 `}
                 <hb-page-link text="${g("app.settings.links.privacy")}" href="https://www.hardbulls.com/datenschutz" blank></hb-page-link>
                 <hb-page-link text="${g("app.settings.links.imprint")}" href="https://www.hardbulls.com/impressum" blank></hb-page-link>

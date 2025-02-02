@@ -2239,7 +2239,7 @@ import{C as _,t as g,S as x,G as we,f as pt,D as ut,L as ke,g as yi,a as $e,E as
 
                 <x-box margin-inline="small" margin-block="small">
                     <x-typography display="body1">
-                        ${g("app.info.version")} 0.1.5
+                        ${g("app.info.version")} 0.1.6
                     </x-typography>
                 </x-box>
 
@@ -2350,7 +2350,9 @@ import{C as _,t as g,S as x,G as we,f as pt,D as ut,L as ke,g as yi,a as $e,E as
                         <x-icon size="medium" svg="/logos/hb.svg"></x-icon>
                     </x-box>
                     <x-box justify-content="center">
-                        <x-typography display="h1">${g("app.title")}</x-typography>
+                        <span style="font-family: NeueAachenBlack, sans-serif; font-size: 32px; letter-spacing: 0.025em;">
+                            ${g("app.title")}
+                        </span>
                     </x-box>
                     <x-box margin-inline="small" margin-block="small" id="top-right">
                         <x-icon size="medium" svg="/logos/bulls_mlb.svg"></x-icon>

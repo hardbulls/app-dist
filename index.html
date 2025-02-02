@@ -53,6 +53,55 @@
             display: none; /* Initially hide the body */
         }
 
+        @font-face {
+            font-family: 'NeueAachenBlack';
+            src: url('/fonts/NeueAachenBlack.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            src: url('/fonts/Inter-Regular.woff2') format('woff2'),
+                url('/fonts/Inter-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/Inter-Italic.woff2') format('woff2'),
+                url('/fonts/Inter-Italic.woff') format('woff');
+            font-weight: 400;
+            font-style: italic;
+        }
+
+
+        @font-face {
+            font-family: 'Inter';
+            src: url('/fonts/Inter-Bold.woff2') format('woff2'),
+                url('/fonts/Inter-Bold.woff') format('woff');
+            font-weight: 700;
+        font-style: normal;
+            }
+
+        @font-face {
+            font-family: 'Inter';
+            src: url('/fonts/Inter-Medium.woff2') format('woff2'),
+                url('/fonts/Inter-Medium.woff') format('woff');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            src: url('/fonts/Inter-SemiBold.woff2') format('woff2'),
+                url('/fonts/Inter-SemiBold.woff') format('woff');
+            font-weight: 600;
+            font-style: normal;
+        }
+
+
         @media (prefers-color-scheme: dark) {
             body {
                 background: #1f1f1f;
@@ -79,7 +128,7 @@
             }
         }
     </style>
-  <script type="module" crossorigin src="/main.V53tnU4l.js"></script>
+  <script type="module" crossorigin src="/main.DmYNWmDh.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/EventRepository-CpvM-aVt.js">
 </head>
 <body>
@@ -88,8 +137,8 @@
 <hb-soft-auth></hb-soft-auth>
 <x-loading></x-loading>
 
-<x-theme style="display: none" theme="auto" font-family-heading="Neue Aachen Regular, sans-serif"
-         font-family-default="sans-serif" color-primary="#ed1c24" color-text-light="#000000" color-text-dark="#ffffff"
+<x-theme style="display: none" theme="auto" font-family-heading="Inter, sans-serif"
+         font-family-default="Inter, sans-serif" color-primary="#ed1c24" color-text-light="#000000" color-text-dark="#ffffff"
          color-background-light="#ffffff" color-background-dark="#1f1f1f" bottom-navigation-height="60px"
          app-bar-height="60px" bottom-navigation-offset="20px">
     <hb-router></hb-router>

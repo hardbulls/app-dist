@@ -2239,7 +2239,7 @@ import{C as _,t as g,S as x,G as we,f as pt,D as ut,L as ke,g as yi,a as $e,E as
 
                 <x-box margin-inline="small" margin-block="small">
                     <x-typography display="body1">
-                        ${g("app.info.version")} 0.1.6
+                        ${g("app.info.version")} 0.1.7
                     </x-typography>
                 </x-box>
 

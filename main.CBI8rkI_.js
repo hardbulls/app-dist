@@ -2337,7 +2337,7 @@ import{C as _,L as ze,f as xi,i as wi,T as Et,F as ki,E as $i}from"./assets/Even
                 <x-icon svg="/logos/hb.svg"></x-icon>
             </x-box>
             <x-box justify-content="center">
-                <span style="font-family: NeueAachenBlack, sans-serif; font-size: 32px; letter-spacing: 0.025em; color: rgba(var(--semantic-text-inverted_rgb), 1);">
+                <span style="font-family: NeueAachenBlack, sans-serif; font-size: 32px; letter-spacing: 0.025em; color: #ffffff;">
                     1.0.0
                 </span>
             </x-box>

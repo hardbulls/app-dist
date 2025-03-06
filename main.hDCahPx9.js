@@ -2237,7 +2237,7 @@ import{C as _,L as ze,f as xi,i as Bt,T as Et,F as wi,E as ki}from"./assets/Even
 
                 <x-box margin-inline="small" margin-block="small">
                     <x-typography display="body1">
-                        ${b("app.info.version")} 1.0.3
+                        ${b("app.info.version")} 1.0.4
                     </x-typography>
                 </x-box>
 
@@ -2338,7 +2338,7 @@ import{C as _,L as ze,f as xi,i as Bt,T as Et,F as wi,E as ki}from"./assets/Even
             </x-box>
             <x-box justify-content="center">
                 <span style="font-family: NeueAachenBlack, sans-serif; font-size: 32px; letter-spacing: 0.025em; color: #ffffff;">
-                    1.0.3
+                    1.0.4
                 </span>
             </x-box>
         </x-stack>

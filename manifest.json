@@ -44,6 +44,18 @@
       { "origin": "*.hardbulls.com" },
       { "origin": "hardbulls.com" }
     ],
+    "screenshots" : [
+      {
+        "src": "screenshots/screenshot-games.png",
+        "sizes": "390x844",
+        "type": "image/png"
+      },
+      {
+        "src": "screenshots/screenshot-settings.png",
+        "sizes": "390x844",
+        "type": "image/png"
+      }
+    ],
     "prefer_related_applications": false,
     "related_applications": [],
     "categories": ["sports", "entertainment"],

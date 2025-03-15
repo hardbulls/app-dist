@@ -5,7 +5,7 @@
     "description": "Hard Bulls Baseball App",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#ffffff",
+    "background_color": "#000000",
     "theme_color": "#ed1c24",
     "orientation": "portrait",
     "icons": [

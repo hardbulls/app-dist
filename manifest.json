@@ -46,14 +46,14 @@
     ],
     "screenshots" : [
       {
-        "src": "screenshots/screenshot-games.png",
+        "src": "screenshots/screenshot-games.webp",
         "sizes": "390x844",
-        "type": "image/png"
+        "type": "image/webp"
       },
       {
-        "src": "screenshots/screenshot-settings.png",
+        "src": "screenshots/screenshot-settings.webp",
         "sizes": "390x844",
-        "type": "image/png"
+        "type": "image/webp"
       }
     ],
     "prefer_related_applications": false,

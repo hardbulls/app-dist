@@ -49,11 +49,19 @@
   "scope": "/",
   "scope_extensions": [
     {
-      "origin": "*.hardbulls.com",
+      "origin": "https://api.hardbulls.com",
       "type": "navigation_scope_extension"
     },
     {
-      "origin": "hardbulls.com",
+      "origin": "https://app.hardbulls.com",
+      "type": "navigation_scope_extension"
+    },
+    {
+      "origin": "https://static.hardbulls.com",
+      "type": "navigation_scope_extension"
+    },
+    {
+      "origin": "https://www.hardbulls.com",
       "type": "navigation_scope_extension"
     }
   ],

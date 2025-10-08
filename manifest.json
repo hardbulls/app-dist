@@ -47,24 +47,6 @@
     "browser"
   ],
   "scope": "/",
-  "scope_extensions": [
-    {
-      "origin": "https://api.hardbulls.com",
-      "type": "navigation_scope_extension"
-    },
-    {
-      "origin": "https://app.hardbulls.com",
-      "type": "navigation_scope_extension"
-    },
-    {
-      "origin": "https://static.hardbulls.com",
-      "type": "navigation_scope_extension"
-    },
-    {
-      "origin": "https://www.hardbulls.com",
-      "type": "navigation_scope_extension"
-    }
-  ],
   "screenshots": [
     {
       "src": "screenshots/screenshot-games.webp",
